@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Laser Simulation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% load static %}
+</head>
+<script>
+    $(function () {
+        var $select = $(".1-100");
+        for (i = 1; i <= 100; i++) {
+            $select.append($('<option></option>').val(i).html(i))
+        }
+    });
+    $(document).ready(function () {
+        document.getElementById("1").style.display = "none";
+        document.getElementById("2").style.display = "none";
+        document.getElementById("3").style.display = "none";
+        document.getElementById("4").style.display = "none";
+    });
+
+</script>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div style="text-align: center;">
+            <h1>LASER WELDING SIMULATION</h1>
+        </div><br><br>
+        <div class="row">
+            <div class="col-sm-3 col-md-6 col-lg-4"
+                style="background-color:yellow; padding-top: 5px; padding-bottom: 10px;">
+
+                <label for="fname">Product Type</label><br>
+                <select id="product" name="">
+                    <option value="Product1">Product 1</option>
+                    <option value="Product2">Product 2</option>
+                </select><br>
+                <label for="lname">Laser type:</label><br>
+                <input type="text" id="Laser" name="lname" value=""> W<br><br>
+                <label for="lname">Welding Speed:</label><br>
+                <input type="text" id="Welding" name="lname" value=""> mm/s<br><br>
+                <label for="lname">Scanning time:</label><br>
+                <input type="text" id="Scanning" name="lname" value=""> s<br><br>
+                <label for="lname">Ambient temprature:</label><br>
+                <input type="text" id="Ambient" name="lname" value=""> K<br><br>
+                <input type="submit" class="btn btn-primary" value="Compute" id="submit">
+
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 " id="1">
+                <img src="{% static 's1.gif' scale-10 %}" width:"10px" alt="My image">
+
+
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-md-6 col-lg-4" id="2">
+                    <img src="{% static 's.png' width-400 %}" alt="My image">
+
+                </div>
+                <div class="col-sm-3 col-md-6 col-lg-4" id="3">
+                    <img src="{% static 'graph.png' scale-10 %}" alt="My image">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-md-6 col-lg-4" id="4">
+                    <img src="{% static 's2.gif' width-400 %}" max-width:50%; alt="My image">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submit").click(function () {
+            document.getElementById("1").style.display = "none";
+            document.getElementById("2").style.display = "none";
+            document.getElementById("3").style.display = "none";
+            document.getElementById("4").style.display = "none";
+            var Laser = $('#Laser').val();
+            var Welding = $('#Welding').val();
+            var Scanning = $('#Scanning').val();
+            var Ambient = $('#Ambient').val();
+            var Product = $('#product').val();
+            if (Laser == 50 && Welding == 20 && Scanning == 0.15 && Ambient == 293.15 && Product == 'Product1') {
+                document.getElementById("1").style.display = "block";
+                document.getElementById("2").style.display = "block";
+                document.getElementById("3").style.display = "block";
+                document.getElementById("4").style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
