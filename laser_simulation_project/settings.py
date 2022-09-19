@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ec2-3-145-167-138.us-east-2.compute.amazonaws.com:8000','ec2-3-145-167-138.us-east-2.compute.amazonaws.com']
 
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
 
 # Application definition
 
